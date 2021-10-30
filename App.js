@@ -2,14 +2,14 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Component } from 'react';
 
 import { View, Text } from 'react-native'
-
-import * as firebase from 'firebase'
+import  firebase from 'firebase/app'
 
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import rootReducer from './redux/reducers'
 import thunk from 'redux-thunk'
 const store = createStore(rootReducer, applyMiddleware(thunk))
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC4_vMXyZflf7shVhJJKx61taTKpl6oT4M",
@@ -20,22 +20,24 @@ const firebaseConfig = {
   appId: "1:348952660612:web:42e526da923c530c5190d1",
   measurementId: "G-BJKQPLXLRL",
 };
+
 if (firebase.apps.length === 0) {
-  firebase.initializeApp(firebaseConfig);
+  firebase.initializeApp(firebaseConfig)
 }
-import { NavigationContainer } from "@react-navigation/native";
-import LandingScreen from "./components/auth/Landing";
-import RegisterScreen from "./components/auth/Register";
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import LandingScreen from './components/auth/Landing'
+import RegisterScreen from './components/auth/Register'
 import LoginScreen from './components/auth/Login'
 import MainScreen from './components/Main'
 import AddScreen from './components/main/Add'
 import SaveScreen from './components/main/Save'
+import CommentScreen from './components/main/Comment'
 
-import { createStackNavigator } from "@react-navigation/stack";
-import { TextInput } from "react-native-gesture-handler";
+
 const Stack = createStackNavigator();
-
-
 
 
 export class App extends Component {
@@ -89,7 +91,7 @@ export class App extends Component {
             <Stack.Screen name="Main" component={MainScreen} />
             <Stack.Screen name="Add" component={AddScreen} navigation={this.props.navigation}/>
             <Stack.Screen name="Save" component={SaveScreen} navigation={this.props.navigation}/>
-     
+            <Stack.Screen name="Comment" component={CommentScreen} navigation={this.props.navigation}/>
           </Stack.Navigator>
         </NavigationContainer>
       </Provider>
