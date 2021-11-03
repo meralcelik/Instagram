@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { StyleSheet, View, Text, Image, FlatList, Button } from 'react-native'
-
-import firebase from 'firebase'
+import  firebase from 'firebase/app'
 require('firebase/firestore')
 import { connect } from 'react-redux'
 
